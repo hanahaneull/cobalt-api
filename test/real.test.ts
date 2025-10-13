@@ -1,4 +1,4 @@
-import { CobaltClient } from "./index.ts";
+import { CobaltClient } from "../index.ts";
 import "@std/dotenv/load";
 
 const apiEndpoint = Deno.env.get("COBALT_API");

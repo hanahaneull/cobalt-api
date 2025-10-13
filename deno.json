@@ -4,8 +4,8 @@
   "description": "TypeScript & type-safe Cobalt API client",
   "main": "index.ts",
   "tasks": {
-    "test:mock": "deno test --allow-net mock.test.ts",
-    "test:real": "deno test --env-file=.env --allow-read --allow-env --allow-net --allow-write real.test.ts"
+    "test:mock": "deno test --allow-net test/mock.test.ts",
+    "test:real": "deno test --env-file=.env --allow-read --allow-env --allow-net --allow-write test/real.test.ts"
   },
   "license": "MIT",
   "compilerOptions": {
