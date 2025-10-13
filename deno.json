@@ -1,0 +1,19 @@
+{
+  "name": "@cute/cobalt-api",
+  "version": "1.0.0",
+  "description": "TypeScript & type-safe Cobalt API client",
+  "main": "index.ts",
+  "tasks": {
+    "test:mock": "deno test --allow-net mock.test.ts",
+    "test:real": "deno test --env-file=.env --allow-read --allow-env --allow-net --allow-write real.test.ts"
+  },
+  "license": "MIT",
+  "compilerOptions": {
+    "strict": true
+  },
+  "exports": "./index.ts",
+  "imports": {
+    "@std/assert": "jsr:@std/assert@^1.0.15",
+    "@std/dotenv": "jsr:@std/dotenv@^0.225.5"
+  }
+}
