@@ -4,7 +4,7 @@
  */
 
 import { assertEquals, assertExists, assertRejects } from "@std/assert";
-import { CobaltClient } from "../index.ts";
+import { CobaltClient } from "../src/index.ts";
 
 // Mock fetch for testing
 const originalFetch = globalThis.fetch;
