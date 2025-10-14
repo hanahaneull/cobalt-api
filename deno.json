@@ -1,6 +1,6 @@
 {
   "name": "@cute/cobalt-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "TypeScript & type-safe Cobalt API client",
   "main": "index.ts",
   "tasks": {
