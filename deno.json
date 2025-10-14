@@ -23,7 +23,8 @@
     ],
     "include": [
       "LICENSE",
-      "src/"
+      "src/",
+      "README.md"
     ]
   }
 }
