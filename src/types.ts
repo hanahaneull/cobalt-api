@@ -1,5 +1,27 @@
 /**
+ * Cobalt API types module
+ *
+ * This module contains all TypeScript type definitions for interacting with the
+ * Cobalt API. It includes request parameters, response types, and interfaces for
+ * all API operations.
+ *
+ * @example
+ * ```ts
+ * import type { CobaltRequest, CobaltResponse } from "@cute/cobalt-api";
+ *
+ * const request: CobaltRequest = {
+ *   url: "https://youtube.com/watch?v=dQw4w9WgXcQ",
+ *   videoQuality: "1080"
+ * };
+ * ```
+ *
+ * @module
+ */
+
+/**
  * Request parameters for the Cobalt API processing endpoint
+ *
+ * Used with the {@link CobaltClient.process} method to specify how media should be processed.
  */
 export interface CobaltRequest {
   /** Source URL - required */
@@ -69,6 +91,8 @@ export interface CobaltRequest {
 
 /**
  * Base response interface with status
+ *
+ * All response types from the Cobalt API extend this interface.
  */
 export interface CobaltResponseBase {
   /** Response status: tunnel / redirect / local-processing / picker / error */
@@ -79,6 +103,9 @@ export interface CobaltResponseBase {
 
 /**
  * Tunnel/Redirect response
+ *
+ * Returned when the media is ready for download through a tunnel URL or direct redirect.
+ * Use {@link CobaltClient.downloadFromTunnel} to download the file.
  */
 export interface TunnelRedirectResponse extends CobaltResponseBase {
   status: "tunnel" | "redirect";
@@ -90,6 +117,8 @@ export interface TunnelRedirectResponse extends CobaltResponseBase {
 
 /**
  * Output metadata object
+ *
+ * Contains metadata information that can be embedded in the output file.
  */
 export interface OutputMetadata {
   /** Album name or collection title */
@@ -116,6 +145,8 @@ export interface OutputMetadata {
 
 /**
  * Output object for local processing
+ *
+ * Contains information about the output file when local processing is used.
  */
 export interface OutputObject {
   /** MIME type of the output file */
@@ -130,6 +161,8 @@ export interface OutputObject {
 
 /**
  * Audio object for local processing
+ *
+ * Contains audio-specific configuration and information.
  */
 export interface AudioObject {
   /** Defines whether audio codec data is copied */
@@ -146,6 +179,9 @@ export interface AudioObject {
 
 /**
  * Local processing response
+ *
+ * Returned when the media needs to be processed locally on the client side.
+ * Contains tunnel URLs for the different media streams.
  */
 export interface LocalProcessingResponse extends CobaltResponseBase {
   status: "local-processing";
@@ -165,6 +201,8 @@ export interface LocalProcessingResponse extends CobaltResponseBase {
 
 /**
  * Picker object for picker response
+ *
+ * Represents an individual media item in a picker response.
  */
 export interface PickerObject {
   /** Type: photo / video / gif */
@@ -177,6 +215,9 @@ export interface PickerObject {
 
 /**
  * Picker response
+ *
+ * Returned when there are multiple media items to choose from, such as
+ * in an image slideshow or gallery.
  */
 export interface PickerResponse extends CobaltResponseBase {
   status: "picker";
@@ -190,6 +231,8 @@ export interface PickerResponse extends CobaltResponseBase {
 
 /**
  * Error context object
+ *
+ * Provides additional context about an error condition.
  */
 export interface ErrorContext {
   /** Origin service */
@@ -200,6 +243,8 @@ export interface ErrorContext {
 
 /**
  * Error object
+ *
+ * Contains information about what went wrong during processing.
  */
 export interface ErrorObject {
   /** Machine-readable error code explaining the failure reason */
@@ -210,6 +255,8 @@ export interface ErrorObject {
 
 /**
  * Error response
+ *
+ * Returned when an error occurs during processing.
  */
 export interface ErrorResponse extends CobaltResponseBase {
   status: "error";
@@ -219,6 +266,9 @@ export interface ErrorResponse extends CobaltResponseBase {
 
 /**
  * Union type for all possible Cobalt API responses
+ *
+ * This is the return type for {@link CobaltClient.process} and encompasses
+ * all possible response types from the API.
  */
 export type CobaltResponse =
   | TunnelRedirectResponse
@@ -228,6 +278,8 @@ export type CobaltResponse =
 
 /**
  * Cobalt instance information
+ *
+ * Contains information about the Cobalt API instance.
  */
 export interface CobaltInfo {
   /** Cobalt version */
@@ -244,6 +296,8 @@ export interface CobaltInfo {
 
 /**
  * Git information
+ *
+ * Contains information about the git repository running the instance.
  */
 export interface GitInfo {
   /** Commit hash */
@@ -256,6 +310,8 @@ export interface GitInfo {
 
 /**
  * Instance info response
+ *
+ * Return type for {@link CobaltClient.getInstanceInfo}.
  */
 export interface InstanceInfoResponse {
   /** Information about the cobalt instance */

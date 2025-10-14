@@ -21,6 +21,8 @@
  * const info = await client.getInstanceInfo();
  * console.log(info.cobalt.version);
  * ```
+ *
+ * @module
  */
 
 // Export all types
