@@ -30,3 +30,23 @@ export * from "./types.ts";
 
 // Export the client class and utility function
 export { CobaltClient } from "./client.ts";
+
+// Export types explicitly for better IDE support
+export type {
+  CobaltRequest,
+  CobaltResponse,
+  CobaltResponseBase,
+  TunnelRedirectResponse,
+  LocalProcessingResponse,
+  PickerResponse,
+  ErrorResponse,
+  OutputMetadata,
+  OutputObject,
+  AudioObject,
+  PickerObject,
+  ErrorContext,
+  ErrorObject,
+  CobaltInfo,
+  GitInfo,
+  InstanceInfoResponse
+} from "./types.ts";

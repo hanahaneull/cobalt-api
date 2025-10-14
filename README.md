@@ -32,6 +32,45 @@ pnpm dlx jsr add @cute/cobalt-api
 
 ## Usage
 
+### Type Imports and Autocomplete
+
+This package provides full TypeScript type definitions with excellent autocomplete support. You can import types in several ways:
+
+```typescript
+// Import both the client and types together
+import { CobaltClient, type CobaltRequest, type CobaltResponse } from "@cute/cobalt-api";
+
+// Or import types directly from the types module
+import type { CobaltRequest, CobaltResponse } from "@cute/cobalt-api/types";
+
+// Or import all types at once
+import type * as CobaltTypes from "@cute/cobalt-api/types";
+```
+
+All types are fully exported and will provide autocomplete support in your IDE:
+
+```typescript
+// When creating a request, you'll get autocomplete for all options
+const request: CobaltRequest = {
+  url: "https://youtube.com/watch?v=dQw4w9WgXcQ",
+  // IDE will suggest all available properties:
+  videoQuality: "1080",    // Autocomplete shows: "max" | "4320" | "2160" | ...
+  audioFormat: "mp3",      // Autocomplete shows: "best" | "mp3" | "ogg" | ...
+  downloadMode: "auto",    // Autocomplete shows: "auto" | "audio" | "mute"
+  // ... and all other options
+};
+
+// When handling responses, you'll get autocomplete for all response types
+const response = await client.process(request);
+
+// TypeScript will know the exact type based on the status
+if (response.status === "tunnel") {
+  // IDE knows this is TunnelRedirectResponse
+  console.log(response.url);      // Autocomplete available
+  console.log(response.filename);  // Autocomplete available
+}
+```
+
 ### Basic Setup
 
 ```typescript
